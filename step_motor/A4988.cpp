@@ -18,7 +18,7 @@ void A4988::SetPWM(uint8_t frequency){
         tone(stp_pin,frequency);
     }
 }
-void A4988::SetAngle(uint8_t steps,uint8_t p_width){
+void A4988::SetPulseNum(uint8_t steps,uint8_t p_width){
   for (int32_t i = 0; i < steps; i++) {
     digitalWrite(stp_pin, HIGH);
     delayMicroseconds(p_width>>2);  

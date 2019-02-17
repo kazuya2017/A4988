@@ -20,7 +20,7 @@ class A4988{
 	void disable(){digitalWrite(enable_pin, HIGH);}
 
 	void SetPWM(uint8_t frequency);
-	void SetAngle(uint8_t steps,uint8_t p_width);
+	void SetPulseNum(uint8_t steps,uint8_t p_width);
 };
 
 #endif
