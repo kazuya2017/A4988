@@ -34,7 +34,7 @@ void SetDir(uint8_t dir){
 }
 
 void SetPWM(uint16_t frequency){
-  if(dir < 32){
+  if(frequency < 32){
     noTone(A4988_X_STP);
   }
   else{
@@ -68,7 +68,7 @@ void loop() {
   // put your main code here, to run repeatedly:
   uint8_t serialbuffer[30];
   uint8_t* endptr;
-  uint8_t rcvflg = 0;
+  uint8_t rcvflag = 0;
 
   if (Serial.available()) {
     serialRead(serialbuffer,30);
@@ -98,11 +98,11 @@ void loop() {
     Serial.println(motordig);
     int32_t mstep = (int32_t) motordig*100/35;
     if(motordig>0){
-      step(true, X_DIR, X_STP, mstep); // X axis motor rotates CW for 1 circle, as in 200 steps
+      step(true, A4988_X_DIR, A4988_X_STP, mstep); // X axis motor rotates CW for 1 circle, as in 200 steps
     }
     else{
       mstep *=-1;
-      step(false, X_DIR, X_STP, mstep); // x axis motor rotates CCW for 1 circle, as in 200 steps      
+      step(false, A4988_X_DIR, A4988_X_STP, mstep); // x axis motor rotates CCW for 1 circle, as in 200 steps      
     }
   delay(1000);
   }
